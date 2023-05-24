@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from "../../../assets/logo.png";
 
 const Menu = () => {
     const menuItem = <>
@@ -12,11 +11,10 @@ const Menu = () => {
     </>
     return (
         <section>
-            <div className="navbar bg-gray-100 text-black ">
+            <div className="navbar bg-black text-gray-100 fixed z-10 bg-opacity-50">
                 <div className="navbar-start">
                     <Link className='flex justify-center items-center gap-3'>
-                        <img src={logo} alt="" className='h-10 w-10' />
-                        <p className='text-2xl text-black'>Bistro Boss</p>
+                        <p className='text-2xl'>Bistro Boss</p>
                     </Link>
                 </div>
                 <div className="navbar-end ">
@@ -24,7 +22,7 @@ const Menu = () => {
                         <label tabIndex={0} className="btn btn-ghost ">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </label>
-                        <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-white text-black text-center rounded-box w-48 right-2">
+                        <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-white text-black text-center rounded-box w-48 right-0">
                             {menuItem}
                         </ul>
                     </div>
