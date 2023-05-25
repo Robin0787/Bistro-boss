@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 const Menu = () => {
     const menuItem = <>
         <Link className='px-3 py-1 hover:text-orange-500 duration-500' to={'/'}>Home</Link>
-        <Link className='px-3 py-1 hover:text-orange-500 duration-500' to={'/contact-us'}>Contact Us</Link>
-        <Link className='px-3 py-1 hover:text-orange-500 duration-500' to={'/dashboard'}>Dashboard</Link>
         <Link className='px-3 py-1 hover:text-orange-500 duration-500' to={'/our-menu'}>Our Menu</Link>
         <Link className='px-3 py-1 hover:text-orange-500 duration-500' to={'/our-shop'}>Our Shop</Link>
+        <Link className='px-3 py-1 hover:text-orange-500 duration-500' to={'/dashboard'}>Dashboard</Link>
+        <Link className='px-3 py-1 hover:text-orange-500 duration-500' to={'/contact-us'}>Contact Us</Link>
     </>
     return (
         <section>
