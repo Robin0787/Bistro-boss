@@ -48,7 +48,7 @@ const Testimonial = () => {
                                 <div className='flex justify-center my-5'>
                                     <FaQuoteLeft className='h-16 w-16 text-black'/>
                                 </div>
-                                <p className='w-[90%] text-justify mx-auto text-gray-600 mb-2'>{review.details}</p>
+                                <p className='w-[90%] text-center mx-auto text-gray-600 mb-2'>{review.details}</p>
                                 <h2 className="text-2xl text-yellow-600">{review.name}</h2>
                             </div>
                         </SwiperSlide>)
