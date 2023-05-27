@@ -1,14 +1,45 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { toast } from 'react-hot-toast';
+import { FaUserCircle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { authContext } from '../../../AuthProvider/Provider';
 
 const Menu = () => {
-    const menuItem = <>
+    const { user, setUser, logOutUser } = useContext(authContext);
+    const menuItem = <div className='flex items-center'>
         <Link className='px-3 py-1 hover:text-orange-500 duration-500' to={'/'}>Home</Link>
         <Link className='px-3 py-1 hover:text-orange-500 duration-500' to={'/our-menu'}>Our Menu</Link>
-        <Link className='px-3 py-1 hover:text-orange-500 duration-500' to={'/our-shop'}>Our Shop</Link>
+        <Link className='px-3 py-1 hover:text-orange-500 duration-500' to={'/our-shop/salad'}>Our Shop</Link>
         <Link className='px-3 py-1 hover:text-orange-500 duration-500' to={'/dashboard'}>Dashboard</Link>
         <Link className='px-3 py-1 hover:text-orange-500 duration-500' to={'/contact-us'}>Contact Us</Link>
-    </>
+        {
+            user ?
+                <div className="dropdown dropdown-end">
+                    <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                        <div className="w-10 rounded-full">
+                            {
+                                user.photoURL ? 
+                                <img src={user.photoURL} />
+                                :
+                                <FaUserCircle className='w-full h-full' />
+                            }
+                        </div>
+                    </label>
+                    <ul tabIndex={0} className="menu menu-compact dropdown-content p-2 shadow bg-base-100 rounded-box w-40">
+                        <li><a>{user.displayName}</a></li>
+                        <li onClick={handleLogOut}><a>Logout</a></li>
+                        
+                    </ul>
+                </div>
+                :
+                <Link className='px-3 py-1 hover:text-orange-500 duration-500' to={'/login'}>Login</Link>
+        }
+    </div>
+    // logging out the user
+    function handleLogOut() {
+        logOutUser()
+        .then(() => {toast.success('LogOut Successful');setUser('')});
+    }
     return (
         <section>
             <div className="navbar bg-black text-gray-100 fixed z-10 bg-opacity-50">

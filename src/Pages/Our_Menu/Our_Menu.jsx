@@ -31,18 +31,18 @@ const Our_Menu = () => {
             </article>
             {/* Todays Offer Section */}
             <section className='mb-14 md:mb-20'>
-            <article className='text-black'>
-                <SectionHeader subHeading={"Don't miss"} heading={"Today's Offer"} />
-            </article>
-            <article className='grid grid-cols-1 lg:grid-cols-2 gap-2 w-[80%] mx-auto'>
-                {
-                    loading ?
-                        <LoadingSpinner />
-                        :
-                        todaysOffer.map((item) => <MenuItem key={item._id} item={item} />)
-                }
-            </article>
-            <SectionButton text={'Order Your Favorite Food'}/>
+                <article className='text-black'>
+                    <SectionHeader subHeading={"Don't miss"} heading={"Today's Offer"} />
+                </article>
+                <article className='grid grid-cols-1 lg:grid-cols-2 gap-2 w-[80%] mx-auto'>
+                    {
+                        loading ?
+                            <LoadingSpinner />
+                            :
+                            todaysOffer.map((item) => <MenuItem key={item._id} item={item} />)
+                    }
+                </article>
+                <SectionButton text={'Order Your Favorite Food'} category={'salad'}/>
             </section >
             {/* Pizzas Section */}
             <section className='mb-14 md:mb-20'>
@@ -50,14 +50,14 @@ const Our_Menu = () => {
                     <SectionCover img={pizzasBanner} subHeading={'would you like to try a Pizza?'} heading={'Pizza'} fontSize={'5xl'} />
                 </article>
                 <article className='grid grid-cols-1 lg:grid-cols-2 gap-2 w-[80%] mx-auto'>
-                {
-                    loading ?
-                        <LoadingSpinner />
-                        :
-                        pizzas.map((item) => <MenuItem key={item._id} item={item} />)
-                }
-            </article>
-            <SectionButton text={'Order Your Favorite Pizza'}/>
+                    {
+                        loading ?
+                            <LoadingSpinner />
+                            :
+                            pizzas.map((item) => <MenuItem key={item._id} item={item} />)
+                    }
+                </article>
+                <SectionButton text={'Order Your Favorite Pizza'} category={'pizza'}/>
             </section>
             {/* Deserts Section */}
             <section className='mb-14 md:mb-20'>
@@ -65,14 +65,14 @@ const Our_Menu = () => {
                     <SectionCover img={desertsBanner} subHeading={'would you like to try a Dessert?'} heading={'Dessert'} fontSize={'5xl'} />
                 </article>
                 <article className='grid grid-cols-1 lg:grid-cols-2 gap-2 w-[80%] mx-auto'>
-                {
-                    loading ?
-                        <LoadingSpinner />
-                        :
-                        desserts.map((item) => <MenuItem key={item._id} item={item} />)
-                }
-            </article>
-            <SectionButton text={'Order Your Favorite Desert'}/>
+                    {
+                        loading ?
+                            <LoadingSpinner />
+                            :
+                            desserts.map((item) => <MenuItem key={item._id} item={item} />)
+                    }
+                </article>
+                <SectionButton text={'Order Your Favorite Desert'} category={'desert'}/>
             </section>
             {/* Salads Section */}
             <section className='mb-14 md:mb-20'>
@@ -80,29 +80,29 @@ const Our_Menu = () => {
                     <SectionCover img={saladsBanner} subHeading={'would you like to try a Salad?'} heading={'Salads'} fontSize={'5xl'} />
                 </article>
                 <article className='grid grid-cols-1 lg:grid-cols-2 gap-2 w-[80%] mx-auto'>
-                {
-                    loading ?
-                        <LoadingSpinner />
-                        :
-                        salads.map((item) => <MenuItem key={item._id} item={item} />)
-                }
-            </article>
-            <SectionButton text={'Order Your Favorite Salad'}/>
+                    {
+                        loading ?
+                            <LoadingSpinner />
+                            :
+                            salads.map((item) => <MenuItem key={item._id} item={item} />)
+                    }
+                </article>
+                <SectionButton text={'Order Your Favorite Salad'} category={'salad'}/>
             </section>
-             {/* Soups Section */}
-             <section className='mb-14 md:mb-20'>
+            {/* Soups Section */}
+            <section className='mb-14 md:mb-20'>
                 <article className='mb-14 md:mb-20'>
                     <SectionCover img={soupsBanner} subHeading={'would you like to try a Soup?'} heading={'Soups'} fontSize={'5xl'} />
                 </article>
                 <article className='grid grid-cols-1 lg:grid-cols-2 gap-2 w-[80%] mx-auto'>
-                {
-                    loading ?
-                        <LoadingSpinner />
-                        :
-                        soups.map((item) => <MenuItem key={item._id} item={item} />)
-                }
-            </article>
-            <SectionButton text={'Order Your Favorite Soup'}/>
+                    {
+                        loading ?
+                            <LoadingSpinner />
+                            :
+                            soups.map((item) => <MenuItem key={item._id} item={item} />)
+                    }
+                </article>
+                <SectionButton text={'Order Your Favorite Soup'} category={'soup'}/>
             </section>
         </section>
     );
