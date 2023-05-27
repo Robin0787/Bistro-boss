@@ -123,13 +123,13 @@ const Login = () => {
                             <h2 className="text-2xl text-gray-700 text-center font-bold my-5">Login</h2>
                             <div className='space-y-2'>
                                 <label htmlFor="email" className='text-sm font-bold text-gray-600'>Email</label><br />
-                                <input type="email" ref={emailRef} name='email' placeholder='Your email' className='p-2 w-full border focus:ring duration-500 ring-gray-300 bg-white focus:outline-0 rounded-md placeholder:text-xs' required />
+                                <input type="email" ref={emailRef} name='email' placeholder='Your email' className='p-2 w-full border focus:ring duration-500 ring-gray-300 bg-white focus:outline-0 placeholder:tracking-[4px] rounded-md placeholder:text-xs' required />
                             </div>
                             <div className='space-y-2'>
                                 <label htmlFor="password" className='text-sm font-bold text-gray-600'>Password</label><br />
                                 <div className='space-y-1'>
                                     <div className='relative'>
-                                        <input onChange={handlePassChange} type={showPass ? 'text' : "password"} name='password' placeholder='Your password' className='p-2 w-full border focus:ring duration-500 ring-gray-300 bg-white focus:outline-0 rounded-md placeholder:text-xs' required />
+                                        <input onChange={handlePassChange} type={showPass ? 'text' : "password"} name='password' placeholder='Your password' className='p-2 w-full border focus:ring duration-500 ring-gray-300 bg-white focus:outline-0 rounded-md placeholder:text-xs placeholder:tracking-[4px]' required />
                                         {showEye && <p onClick={() => { setShowPass(!showPass) }} className='absolute right-2 top-[5px] cursor-pointer p-2 hover:bg-gray-100 rounded-full'>
                                             {
                                                 showPass ?
