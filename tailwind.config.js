@@ -7,7 +7,8 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        'featuredImg': "url('./featured.jpg')"
+        'featuredImg': "url('./featured.jpg')",
+        "formBg": "url('./wood-grain-pattern.png')"
       }
     },
   },
