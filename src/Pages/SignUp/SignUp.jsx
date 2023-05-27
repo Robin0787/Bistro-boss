@@ -114,18 +114,18 @@ const SignUp = () => {
                         <form onSubmit={handleSignUp} className='text-left rounded-md py-3 px-6 lg:px-14 space-y-3 w-full text-black'>
                             <h2 className="text-2xl text-gray-700 text-center font-semibold rounded-md my-5">SignUp</h2>
                             <div className='space-y-2'>
-                                <label htmlFor="name" className='text-sm text-gray-600'>Name</label><br />
-                                <input type="text" name='name' placeholder='Your name' className='p-2 w-full border focus:ring duration-500 ring-gray-300 bg-white focus:outline-0 rounded-md placeholder:text-xs' required />
+                                <label htmlFor="name" className='text-sm text-gray-600 font-bold'>Name</label><br />
+                                <input type="text" name='name' placeholder='Your name' className='p-2 w-full border focus:ring duration-500 ring-gray-300 bg-white focus:outline-0 rounded-md placeholder:text-xs placeholder:tracking-[4px]' required />
                             </div>
                             <div className='space-y-2'>
-                                <label htmlFor="email" className='text-sm text-gray-600'>Email</label><br />
-                                <input type="email" name='email' placeholder='Your email' className='p-2 w-full border focus:ring duration-500 ring-gray-300 bg-white focus:outline-0 rounded-md placeholder:text-xs' required />
+                                <label htmlFor="email" className='text-sm text-gray-600 font-bold'>Email</label><br />
+                                <input type="email" name='email' placeholder='Your email' className='p-2 w-full border focus:ring duration-500 ring-gray-300 bg-white focus:outline-0 rounded-md placeholder:text-xs placeholder:tracking-[4px]' required />
                             </div>
                             <div className='space-y-2'>
-                                <label htmlFor="password" className='text-sm text-gray-600'>Password</label><br />
+                                <label htmlFor="password" className='text-sm text-gray-600 font-bold'>Password</label><br />
                                 <div className='space-y-2'>
                                     <div className='relative mb-6'>
-                                        <input onChange={handlePassChange} type={showPass ? 'text' : "password"} name='password' placeholder='Your password' className='p-2 w-full border focus:ring duration-500 ring-gray-300 bg-white focus:outline-0 rounded-md placeholder:text-xs' required />
+                                        <input onChange={handlePassChange} type={showPass ? 'text' : "password"} name='password' placeholder='Your password' className='p-2 w-full border focus:ring duration-500 ring-gray-300 bg-white focus:outline-0 rounded-md placeholder:text-xs placeholder:tracking-[4px]' required />
                                         {showEye && <p onClick={() => { setShowPass(!showPass) }} className='absolute right-2 top-[5px] cursor-pointer p-2 hover:bg-gray-100 rounded-full'>
                                             {
                                                 showPass ?
