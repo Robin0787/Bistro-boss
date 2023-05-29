@@ -4,4 +4,19 @@
 
 :root {
   background-color: white;
+  scroll-behavior: smooth;
+}
+
+.drawer-side .default {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: white;
+}
+.drawer-side .active {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: rgb(240, 171, 23);
+  transition-duration: 0.4s;
 }
