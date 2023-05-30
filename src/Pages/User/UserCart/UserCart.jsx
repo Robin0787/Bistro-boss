@@ -24,10 +24,9 @@ const UserCart = () => {
               })
               .then(res => res.json())
               .then(data => {
-                console.log(data);
                 if(data.deletedCount > 0) {
-                    toast.success('Deleted');
                     refetch();
+                    toast.success('Deleted');
                 }else {
                     toast.error('Error');
                 }
@@ -37,7 +36,7 @@ const UserCart = () => {
     }
 
     return (
-        <section className='flex flex-col justify-center text-black bg-gray-100'>
+        <section className='flex flex-col justify-center text-black bg-gray-100 min-h-screen'>
             <SectionHeader subHeading={'My Cart'} heading={'Wanna Add More?'} />
             <article className='px-4 md:px-10 lg:px-20'>
                 <div className='bg-white p-5'>

@@ -46,7 +46,7 @@ const Provider = ({children}) => {
                 headers: {
                     'content-type': 'application/json'
                 },
-                body: JSON.stringify({email: currentUser.email})
+                body: JSON.stringify({email: currentUser?.email})
             })
             .then(res => res.json())
             .then(data => {

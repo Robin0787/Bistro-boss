@@ -1,6 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
 import DashboardRoute from "../Layouts/DashboardRoute/DashboardRoute";
 import Main from "../Layouts/Main/Main";
+import AddItems from "../Pages/Admin/AddItems/AddItems";
+import AdminHome from "../Pages/Admin/AdminHome/AdminHome";
+import AllUsers from "../Pages/Admin/AllUsers/AllUsers";
+import ManageBookings from "../Pages/Admin/ManageBookings/ManageBookings";
+import ManageItems from "../Pages/Admin/ManageItems/ManageItems";
 import Contact_Us from "../Pages/Contact_Us/Contact_Us";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
@@ -77,6 +82,26 @@ const Routes = createBrowserRouter([
             {
                 path: "/dashboard/my-booking",
                 element: <UserBooking />
+            },
+            {
+                path: "/dashboard/admin-home",
+                element: <AdminHome />
+            },
+            {
+                path: "/dashboard/add-items",
+                element: <AddItems />
+            },
+            {
+                path: "/dashboard/manage-items",
+                element: <ManageItems />
+            },
+            {
+                path: "/dashboard/manage-bookings",
+                element: <ManageBookings />
+            },
+            {
+                path: "/dashboard/all-users",
+                element: <AllUsers />
             },
         ]
     }

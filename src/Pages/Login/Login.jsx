@@ -45,6 +45,14 @@ const Login = () => {
         continueWithGithub()
             .then(res => {
                 toast.success('SignUp Successful');
+                const { displayName, email } = res.user;
+                fetch(`http://localhost:1000/users`, {
+                    method: "POST",
+                    headers: { 'content-type': 'application/json' },
+                    body: JSON.stringify({ displayName, email })
+                })
+                    .then(res => res.json())
+                    .then(data => {})
                 navigate(from, { replace: true });
             })
             .catch(err => {
@@ -57,6 +65,14 @@ const Login = () => {
         continueWithGithub()
             .then(res => {
                 toast.success('SignUp Successful');
+                const { displayName, email } = res.user;
+                fetch(`http://localhost:1000/users`, {
+                    method: "POST",
+                    headers: { 'content-type': 'application/json' },
+                    body: JSON.stringify({ displayName, email })
+                })
+                    .then(res => res.json())
+                    .then(data => { })
                 navigate(from, { replace: true });
             })
             .catch(err => {

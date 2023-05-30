@@ -15,7 +15,6 @@ const SignUp = () => {
     const { user, loading, continueWithGithub, continueWithGoogle, signUpWithEmailPass } = useContext(authContext);
     const navigate = useNavigate();
 
-
     // signUp user with email and password
     function handleSignUp(e) {
         e.preventDefault();
@@ -23,16 +22,39 @@ const SignUp = () => {
         const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
+        const image = form.image.files[0];
+        const formData = new FormData();
+        formData.append('image', image);
         if (isPassOk) {
-            signUpWithEmailPass(email, password)
-                .then(res => {
-                    toast.success('SignUp Successful');
-                    updateProfile(res.user, { displayName: name });
-                    form.reset();
-                    navigate('/');
+            const url = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMGBB_API_KEY}`
+            fetch(url, { method: "POST", body: formData })
+                .then(res => res.json())
+                .then(data => {
+                    const photo = data.data?.display_url;
+                    signUpWithEmailPass(email, password)
+                        .then(res => {
+                            toast.success('SignUp Successful');
+                            updateProfile(res.user, { displayName: name, photoURL: photo })
+                                .then(() => {
+                                    const { displayName, email } = res.user;
+                                    fetch(`http://localhost:1000/users`, {
+                                        method: "POST",
+                                        headers: { 'content-type': 'application/json' },
+                                        body: JSON.stringify({ displayName, email })
+                                    })
+                                        .then(res => res.json())
+                                        .then(data => {})
+                                })
+                            form.reset();
+                            navigate('/');
+                        })
+                        .catch(err => {
+                            toast.error(err.message.slice(22, -2).replace(/-/g, ' '));
+                            console.log(err.message);
+                        })
                 })
                 .catch(err => {
-                    toast.error(err.message.slice(22, -2).replace(/-/g, ' '));
+                    toast.error(err.message);
                     console.log(err.message);
                 })
         }
@@ -42,10 +64,19 @@ const SignUp = () => {
     }
     // SignUp user with Google
     function handleGoogleSignUp() {
-        continueWithGithub()
+        continueWithGoogle()
             .then(res => {
                 toast.success('SignUp Successful');
-                navigate('/');
+                const { displayName, email } = res.user;
+                fetch(`http://localhost:1000/users`, {
+                    method: "POST",
+                    headers: { 'content-type': 'application/json' },
+                    body: JSON.stringify({ displayName, email })
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        navigate('/');
+                    })
             })
             .catch(err => {
                 toast.error('Something wrong! Check console');
@@ -54,10 +85,19 @@ const SignUp = () => {
     }
     // SignUp user with email and password
     function handleGithubSignUp() {
-        continueWithGoogle()
+        continueWithGithub()
             .then(res => {
                 toast.success('SignUp Successful');
-                navigate('/');
+                const { displayName, email } = res.user;
+                fetch(`http://localhost:1000/users`, {
+                    method: "POST",
+                    headers: { 'content-type': 'application/json' },
+                    body: JSON.stringify({ displayName, email })
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        navigate('/');
+                    })
             })
             .catch(err => {
                 toast.error('Something wrong! Check console');
@@ -138,6 +178,19 @@ const SignUp = () => {
                                     </div>
                                 </div>
                             </div>
+                            <div className='space-y-2'>
+                                <label htmlFor='image' className='block text-sm'>
+                                    Select Image:
+                                </label>
+                                <input
+                                    required
+                                    type='file'
+                                    id='image'
+                                    name='image'
+                                    accept='image/*'
+                                    className='tracking-[2px]'
+                                />
+                            </div>
                             <div>
                                 <button type='submit' className='w-full py-3 bg-[#D1A054] text-white font-semibold cursor-pointer rounded-md hover:bg-[#99743d] duration-500 mt-2'>Sign Up</button>
                             </div>
@@ -147,8 +200,8 @@ const SignUp = () => {
                                 <hr className='w-1/4 border-gray-300' />
                             </div>
                             <div className='flex items-center justify-center gap-4'>
-                                <p onClick={handleGithubSignUp} className='border border-gray-500 duration-300 p-2 cursor-pointer rounded-full text-gray-600 hover:text-white hover:bg-gray-500'><FaGoogle className='h-5 w-5' /></p>
-                                <p onClick={handleGoogleSignUp} className='border border-gray-500 duration-300 p-2 cursor-pointer rounded-full text-gray-600 hover:text-white hover:bg-gray-500'><FaGithub className='h-5 w-5' /></p>
+                                <p onClick={handleGoogleSignUp} className='border border-gray-500 duration-300 p-2 cursor-pointer rounded-full text-gray-600 hover:text-white hover:bg-gray-500'><FaGoogle className='h-5 w-5' /></p>
+                                <p onClick={handleGithubSignUp} className='border border-gray-500 duration-300 p-2 cursor-pointer rounded-full text-gray-600 hover:text-white hover:bg-gray-500'><FaGithub className='h-5 w-5' /></p>
                             </div>
                             <div>
                                 <p className="text-sm text-center text-gray-600">Already have an account? <Link to={'/login'} className='text-[#cc8317]'>Login</Link></p>
