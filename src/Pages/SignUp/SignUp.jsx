@@ -3,6 +3,7 @@ import React, { useContext, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { toast } from 'react-hot-toast';
 import { FaEye, FaEyeSlash, FaGithub, FaGoogle } from 'react-icons/fa';
+import { ImSpinner9 } from 'react-icons/im';
 import { Link, useNavigate } from 'react-router-dom';
 import { authContext } from '../../AuthProvider/Provider';
 import loginImage from "../../assets/others/authentication2.png";
@@ -12,12 +13,14 @@ const SignUp = () => {
     const [showPass, setShowPass] = useState(false);
     const [passError, setPassError] = useState('');
     const [isPassOk, setIsPassOk] = useState(false);
-    const { user, loading, continueWithGithub, continueWithGoogle, signUpWithEmailPass } = useContext(authContext);
+    const { continueWithGithub, continueWithGoogle, signUpWithEmailPass } = useContext(authContext);
+    const [processing, setProcessing] = useState(false);
     const navigate = useNavigate();
 
     // signUp user with email and password
     function handleSignUp(e) {
         e.preventDefault();
+        setProcessing(true);
         const form = e.target;
         const name = form.name.value;
         const email = form.email.value;
@@ -43,12 +46,13 @@ const SignUp = () => {
                                         body: JSON.stringify({ displayName, email })
                                     })
                                         .then(res => res.json())
-                                        .then(data => {})
+                                        .then(data => {setProcessing(false)})
                                 })
                             form.reset();
                             navigate('/');
                         })
                         .catch(err => {
+                            setProcessing(false);
                             toast.error(err.message.slice(22, -2).replace(/-/g, ' '));
                             console.log(err.message);
                         })
@@ -60,6 +64,7 @@ const SignUp = () => {
         }
         else {
             toast.error('Password is not valid');
+            setProcessing(false);
         }
     }
     // SignUp user with Google
@@ -192,7 +197,7 @@ const SignUp = () => {
                                 />
                             </div>
                             <div>
-                                <button type='submit' className='w-full py-3 bg-[#D1A054] text-white font-semibold cursor-pointer rounded-md hover:bg-[#99743d] duration-500 mt-2'>Sign Up</button>
+                                <button type='submit' className='w-full py-3 bg-[#D1A054] text-white font-semibold cursor-pointer rounded-md hover:bg-[#99743d] duration-500 mt-2 flex justify-center disabled:hover:bg-[#D1A054] disabled:cursor-not-allowed' disabled={processing}>{processing ? <ImSpinner9 className='animate-spin' size={20}/> : "Sign Up"}</button>
                             </div>
                             <div className='flex w-full items-center justify-center'>
                                 <hr className='w-1/4 border-gray-300' />

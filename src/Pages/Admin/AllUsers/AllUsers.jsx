@@ -11,6 +11,8 @@ const AllUsers = () => {
         const data = res.json();
         return data;
     })
+
+    // Deleting user
     function deleteUser(id) {
         Swal.fire({
             title: 'Are you sure?',
@@ -31,6 +33,8 @@ const AllUsers = () => {
             }
         })
     }
+
+    // Making user admin
     function makeAdmin(id) {
         Swal.fire({
             title: 'Are you sure?',
@@ -58,7 +62,7 @@ const AllUsers = () => {
                 <div className='bg-white'>
                     <h2 className="text-2xl text-black font-semibold ">Total Users : {users.length}</h2>
                 </div>
-                <div className="py-4  bg-white mb-5">
+                <div className="py-4  bg-white mb-5 text-gray-600">
                     <table className='table-auto border w-full text-center'>
                         <thead>
                             <tr className='border bg-gray-100'>
@@ -83,7 +87,7 @@ const AllUsers = () => {
                                             <FaUser data-tooltip-id="my-tooltip" data-tooltip-content="User" size={20} className='text-blue-500 mx-auto cursor-pointer hover:text-indigo-700 duration-300' onClick={() => makeAdmin(user._id)}/>
                                         }
                                     </td>
-                                    <td> <FaTrashAlt size={18} className='text-blue-500 mx-auto cursor-pointer hover:text-red-500 duration-300' onClick={() => deleteUser(user._id)} /></td>
+                                    <td> <FaTrashAlt size={18} className='text-red-500 mx-auto cursor-pointer hover:text-red-700 duration-300' onClick={() => deleteUser(user._id)} /></td>
                                 </tr>
                                 ))
                             }

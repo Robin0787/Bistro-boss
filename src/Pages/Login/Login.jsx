@@ -12,7 +12,7 @@ const Login = () => {
     const [showPass, setShowPass] = useState(false);
     const emailRef = useRef();
     const captchaRef = useRef();
-    const {continueWithGithub, continueWithGoogle, loginWithEmailPass, passReset } = useContext(authContext);
+    const { continueWithGithub, continueWithGoogle, loginWithEmailPass, passReset } = useContext(authContext);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
@@ -50,9 +50,7 @@ const Login = () => {
                     method: "POST",
                     headers: { 'content-type': 'application/json' },
                     body: JSON.stringify({ displayName, email })
-                })
-                    .then(res => res.json())
-                    .then(data => {})
+                });
                 navigate(from, { replace: true });
             })
             .catch(err => {
@@ -96,13 +94,13 @@ const Login = () => {
         if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
             if (validateCaptcha(captcha, false) == true) {
                 passReset(email)
-                .then(() => {
-                    toast.success('Reset Email Sent');
-                })
-                .catch(err => {
-                    toast.error(err.message.slice(22, -2).replace(/-/g, ' '));
-                
-                })
+                    .then(() => {
+                        toast.success('Reset Email Sent');
+                    })
+                    .catch(err => {
+                        toast.error(err.message.slice(22, -2).replace(/-/g, ' '));
+
+                    })
             }
             else {
                 toast.error("Captcha doesn't match");

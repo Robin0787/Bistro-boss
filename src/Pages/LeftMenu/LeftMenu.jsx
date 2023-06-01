@@ -3,10 +3,11 @@ import { FaArrowCircleLeft, FaBars, FaBook, FaCalendarAlt, FaCalendarCheck, FaCa
 import { Link, NavLink } from 'react-router-dom';
 import { Tooltip } from 'react-tooltip';
 import useCartItems from '../../Hooks/useCartItems';
+import useCheckAdmin from '../../Hooks/useCheckAdmin';
 
 const LeftMenu = () => {
     const [cart] = useCartItems();
-    const isAdmin = true;
+    const [isAdmin]= useCheckAdmin();
     const menus = isAdmin ?
         <>
             <NavLink to={'/dashboard/admin-home'}
@@ -67,7 +68,6 @@ const LeftMenu = () => {
                 <FaCalendarCheck data-tooltip-id="my-tooltip" data-tooltip-content="My Bookings" /> <span className='hidden md:inline'>My Bookings</span>
             </NavLink>
         </>;
-
     return (
         <div className="drawer min-h-screen">
             <input id="my-drawer" type="checkbox" className="drawer-toggle" />

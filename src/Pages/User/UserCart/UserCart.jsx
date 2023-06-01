@@ -8,7 +8,8 @@ import useCartItems from '../../../Hooks/useCartItems';
 const UserCart = () => {
     const [cart, refetch] = useCartItems();
     const totalPrice = cart.reduce((prevValue, item) => prevValue + item.price, 0);
-    
+    console.log('---------Cart-----------');
+    console.log(cart);
     function deleteItem (id) {
         Swal.fire({
             title: 'Are you sure?',

@@ -10,7 +10,9 @@ const ItemCard = ({ item }) => {
     const {user} = useContext(authContext);
     function addToCart () {
         if(user && user.email){
-            const addItem = {...item, email: user.email};
+            // Not sending the items id because If anyone clicked same items two times the server will give error and eventually crash because in database two items can't have same id.
+            // const addItem = {...item, email: user.email};
+            const addItem = {name, recipe, image, category, price, email: user.email};
             fetch('http://localhost:1000/add-to-cart', {
                 method: "POST",
                 headers: {

@@ -3,11 +3,12 @@ import { toast } from 'react-hot-toast';
 import { FaCartArrowDown, FaUserCircle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { authContext } from '../../../AuthProvider/Provider';
-import useCartItems from '../../../Hooks/useCartItems';
+// import useCartItems from '../../../Hooks/useCartItems';
 
 const Menu = () => {
     const { user, setUser, logOutUser } = useContext(authContext);
-    const [ cart, refetch] = useCartItems();
+    // const [ cart, refetch] = useCartItems();
+    const [cart, refetch] = [[], function(){console.log('Refetch')}]
     const menuItem = <div className='flex items-center'>
         <Link className='px-3 py-1 hover:text-orange-500 duration-500' to={'/'}>Home</Link>
         <Link className='px-3 py-1 hover:text-orange-500 duration-500' to={'/our-menu'}>Our Menu</Link>
