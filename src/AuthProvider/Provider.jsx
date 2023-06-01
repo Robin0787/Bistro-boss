@@ -41,7 +41,6 @@ const Provider = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
-            setLoading(false);
             // Fetching data using axios
             if (currentUser) {
                 // axios.post('http://localhost:1000/get-token', { email: currentUser?.email })
@@ -64,6 +63,7 @@ const Provider = ({ children }) => {
                     .then(data => {
                         if (data.token) {
                             localStorage.setItem('user-token', data.token);
+                            setLoading(false);
                             toast.success('Token will be expired after 5 minutes');
                         }
                     })

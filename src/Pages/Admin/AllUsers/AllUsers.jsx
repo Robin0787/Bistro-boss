@@ -4,11 +4,13 @@ import { FaTrashAlt, FaUser, FaUserShield } from 'react-icons/fa';
 import { Tooltip } from 'react-tooltip';
 import Swal from 'sweetalert2';
 import SectionHeader from '../../../Components/SectionHeader/SectionHeader';
+import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 
 const AllUsers = () => {
+    const [axiosSecure] = useAxiosSecure();
     const { data: users = [], refetch } = useQuery(['users'], async () => {
-        const res = await fetch(`http://localhost:1000/users`)
-        const data = res.json();
+        const res = await axiosSecure.get(`/users`);
+        const data = res.data;
         return data;
     })
 

@@ -42,7 +42,7 @@ const Login = () => {
     }
     // Login the user with Google
     function handleGoogleLogin() {
-        continueWithGithub()
+        continueWithGoogle()
             .then(res => {
                 toast.success('SignUp Successful');
                 const { displayName, email } = res.user;

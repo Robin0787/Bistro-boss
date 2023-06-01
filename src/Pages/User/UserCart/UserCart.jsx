@@ -8,8 +8,6 @@ import useCartItems from '../../../Hooks/useCartItems';
 const UserCart = () => {
     const [cart, refetch] = useCartItems();
     const totalPrice = cart.reduce((prevValue, item) => prevValue + item.price, 0);
-    console.log('---------Cart-----------');
-    console.log(cart);
     function deleteItem (id) {
         Swal.fire({
             title: 'Are you sure?',
@@ -35,7 +33,6 @@ const UserCart = () => {
             }
           })
     }
-
     return (
         <section className='flex flex-col justify-center text-black bg-gray-100 min-h-screen'>
             <SectionHeader subHeading={'My Cart'} heading={'Wanna Add More?'} />

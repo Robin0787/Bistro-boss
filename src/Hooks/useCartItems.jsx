@@ -6,12 +6,17 @@ import useAxiosSecure from './useAxiosSecure';
 
 
 const useCartItems = () => {
-    const { user, logOutUser } = useContext(authContext);
+    const { user, loading } = useContext(authContext);
     const navigate = useNavigate();
     const [ axiosSecure ] = useAxiosSecure();
 
     const { refetch, data: cart = [] } = useQuery({
         queryKey: ['cart', user?.email],
+        enabled: !loading,
+        queryFn: async () => {
+            const res =  await axiosSecure(`/cart-items?email=${user?.email}`)
+            return res.data;
+        }
         // queryFn: async () => {
         //     const token = localStorage.getItem('user-token');
         //     const res = await fetch(`http://localhost:1000/cart-items?email=${user?.email}`, {
@@ -30,10 +35,6 @@ const useCartItems = () => {
         //     }
         //     return data;
         // }
-        queryFn: async () => {
-            const res =  await axiosSecure(`/cart-items?email=${user?.email}`)
-            return res.data;
-        }
     })
 
     return [cart, refetch];
