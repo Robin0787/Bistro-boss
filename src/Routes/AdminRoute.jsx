@@ -20,8 +20,8 @@ const AdminRoute = ({children}) => {
     if(user && isAdmin) {
        return children;
     }
-    toast.success('Login First');
-    return <Navigate to={'/login'} state={{from: location}} replace/>
+    toast.success('You are not authorized');
+    return <Navigate to={'/'} state={{from: location}} replace/>
 };
 
 export default AdminRoute;

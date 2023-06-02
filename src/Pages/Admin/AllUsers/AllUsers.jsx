@@ -12,7 +12,7 @@ const AllUsers = () => {
         const res = await axiosSecure.get(`/users`);
         const data = res.data;
         return data;
-    })
+    });
 
     // Deleting user
     function deleteUser(id) {

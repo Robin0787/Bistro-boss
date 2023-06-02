@@ -54,8 +54,11 @@ const Menu = () => {
         <section>
             <div className="navbar bg-black text-gray-100 fixed z-10 bg-opacity-50">
                 <div className="navbar-start">
-                    <Link className='flex justify-center items-center gap-3'>
+                    {/* <Link className='flex justify-center items-center gap-3'>
                         <p className='text-2xl'>Bistro Boss</p>
+                    </Link> */}
+                    <Link className='uppercase flex flex-col justify-center text-xl  md:text-3xl text-white '>Bistro Boss
+                        <span className='text-[10px] -mt-3 lg:-mt-4 tracking-[6px] md:tracking-[12px] '>Restaurant</span>
                     </Link>
                 </div>
                 <div className="navbar-end ">

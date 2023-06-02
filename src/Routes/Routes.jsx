@@ -19,6 +19,7 @@ import UserHome from "../Pages/User/UserHome/UserHome";
 import UserPayment from "../Pages/User/UserPayment/UserPayment";
 import UserReservation from "../Pages/User/UserReservation/UserReservation";
 import PrivateRoutes from "../Routes/PrivateRoutes";
+import AdminRoute from "./AdminRoute";
 
 const Routes = createBrowserRouter([
     {
@@ -89,7 +90,7 @@ const Routes = createBrowserRouter([
             },
             {
                 path: "/dashboard/add-items",
-                element: <AddItems />
+                element: <AdminRoute><AddItems /></AdminRoute>
             },
             {
                 path: "/dashboard/manage-items",
