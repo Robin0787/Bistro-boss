@@ -12,27 +12,27 @@ const LeftMenu = () => {
         <>
             <NavLink to={'/dashboard/admin-home'}
                 className={({ isActive }) => isActive ? 'active' : 'default'}>
-                <FaHome data-tooltip-id="my-tooltip" data-tooltip-content="Home"/>
+                <FaHome data-tooltip-id="my-tooltip" data-tooltip-content="Admin Home"/>
                 <span className='hidden md:inline'>Admin Home</span>
             </NavLink>
             <NavLink to={'/dashboard/add-items'}
                 className={({ isActive }) => isActive ? 'active' : 'default'}>
-                <FaUtensils data-tooltip-id="my-tooltip" data-tooltip-content="Reservation" /> <span className='hidden md:inline'>Add Items</span>
+                <FaUtensils data-tooltip-id="my-tooltip" data-tooltip-content="Add Items" /> <span className='hidden md:inline'>Add Items</span>
             </NavLink>
             <NavLink to={'/dashboard/manage-items'}
                 className={({ isActive }) => isActive ? 'active' : 'default'}>
-                <FaWallet data-tooltip-id="my-tooltip" data-tooltip-content="Payment History" /> <span className='hidden md:inline'>Manage Items</span>
+                <FaWallet data-tooltip-id="my-tooltip" data-tooltip-content="Manage Items" /> <span className='hidden md:inline'>Manage Items</span>
             </NavLink>
             <NavLink to={'/dashboard/manage-bookings'}
                 className={({ isActive }) => isActive ? 'active' : 'default'}>
-                <FaBook data-tooltip-id="my-tooltip" data-tooltip-content="Add Review" />
+                <FaBook data-tooltip-id="my-tooltip" data-tooltip-content="Manage Bookings" />
                 <span className='hidden md:inline'>
                     <span className='hidden md:inline'>Manage Bookings</span>
                 </span>
             </NavLink>
             <NavLink to={'/dashboard/all-users'}
                 className={({ isActive }) => isActive ? 'active' : 'default'}>
-                <FaUsers data-tooltip-id="my-tooltip" data-tooltip-content="My Bookings" /> <span className='hidden md:inline'>All Users</span>
+                <FaUsers data-tooltip-id="my-tooltip" data-tooltip-content="All Users" /> <span className='hidden md:inline'>All Users</span>
             </NavLink>
         </>
         :

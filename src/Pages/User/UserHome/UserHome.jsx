@@ -1,9 +1,10 @@
 import React from 'react';
+import SectionHeader from '../../../Components/SectionHeader/SectionHeader';
 
 const UserHome = () => {
     return (
         <div className='bg-white min-h-screen'>
-            <h2 className='text-3xl text-gray-600'>Home</h2>
+            <SectionHeader subHeading={'Home'} heading={'Your Home'} />
         </div>
     );
 };

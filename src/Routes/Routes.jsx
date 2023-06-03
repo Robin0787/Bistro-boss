@@ -94,7 +94,7 @@ const Routes = createBrowserRouter([
             },
             {
                 path: "/dashboard/manage-items",
-                element: <ManageItems />
+                element: <AdminRoute><ManageItems /></AdminRoute>
             },
             {
                 path: "/dashboard/manage-bookings",
