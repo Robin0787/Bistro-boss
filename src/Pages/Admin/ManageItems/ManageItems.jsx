@@ -1,11 +1,37 @@
 import React from 'react';
 import { toast } from 'react-hot-toast';
 import { FaEdit, FaTrashAlt } from 'react-icons/fa';
+import Swal from 'sweetalert2';
 import SectionHeader from '../../../Components/SectionHeader/SectionHeader';
+import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import useMenu from '../../../Hooks/useMenu';
 
 const ManageItems = () => {
-    const [menu, loading] = useMenu();
+    const [menu, loading, refetch] = useMenu();
+    const [axiosSecure] = useAxiosSecure();
+
+    // Delete item by admin
+    function deleteItem (id) {
+        Swal.fire({
+            title: 'Are you sure?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              axiosSecure.delete(`/delete-item/${id}`)
+              .then(res => {
+                console.log(res.data);
+                if(res.data.deletedCount > 0){
+                    toast.success('Item Deleted');
+                    refetch();
+                }
+              })
+            }
+          })
+    }
     return (
         <section className='bg-white min-h-screen'>
           <article className='text-black'>
@@ -38,7 +64,7 @@ const ManageItems = () => {
                                     <td>${item.price}</td>
                                     <td> <span className='block hover:bg-green-500 w-10 mx-auto py-3 rounded-full text-green-600 hover:text-white duration-300 cursor-pointer' onClick={() => {toast('Edit')}}>
                                     <FaEdit size={18} className=' mx-auto'/></span></td>
-                                    <td> <span className='block hover:bg-red-500 w-10 mx-auto py-3 rounded-full text-red-600 hover:text-white duration-300 cursor-pointer' onClick={() => {toast('Delete')}}>
+                                    <td> <span className='block hover:bg-red-500 w-10 mx-auto py-3 rounded-full text-red-600 hover:text-white duration-300 cursor-pointer' onClick={() => {deleteItem(item._id)}}>
                                     <FaTrashAlt size={16} className=' mx-auto' /></span></td>
                                 </tr>
                                 ))

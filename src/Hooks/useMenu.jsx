@@ -13,14 +13,14 @@ const useMenu = () => {
     //     })
     // }, []);
     // return [menu, loading];
-    const {data: menu=[], isLoading: loading} = useQuery({
+    const {data: menu=[], isLoading: loading, refetch} = useQuery({
         queryKey: ['menu'],
         queryFn: async () => {
             const res = await fetch('http://localhost:1000/all-items')
             return res.json();
         }
     })
-    return [menu, loading];
+    return [menu, loading, refetch];
 }
 
 export default useMenu;

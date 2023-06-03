@@ -64,7 +64,8 @@ const UserCart = () => {
                                     </td>
                                     <td>{item.name}</td>
                                     <td>${item.price}</td>
-                                    <td> <FaTrashAlt className='text-blue-500 mx-auto cursor-pointer hover:text-red-500 duration-300' onClick={() => deleteItem(item._id)}/></td>
+                                    <td> <span className='block hover:bg-red-500 w-10 mx-auto py-3 rounded-full text-red-600 hover:text-white duration-300 cursor-pointer' onClick={() => deleteItem(item._id)}>
+                                    <FaTrashAlt size={16} className=' mx-auto' /></span></td>
                                 </tr>
                                 ))
                             }
