@@ -11,6 +11,7 @@ const ManageItems = () => {
     const [axiosSecure] = useAxiosSecure();
 
     // Delete item by admin
+    
     function deleteItem (id) {
         Swal.fire({
             title: 'Are you sure?',

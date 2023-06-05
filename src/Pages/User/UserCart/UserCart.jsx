@@ -1,6 +1,7 @@
 import React from 'react';
 import { toast } from 'react-hot-toast';
 import { FaTrashAlt } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import SectionHeader from "../../../Components/SectionHeader/SectionHeader";
 import useCartItems from '../../../Hooks/useCartItems';
@@ -35,13 +36,13 @@ const UserCart = () => {
     }
     return (
         <section className='flex flex-col justify-center text-black bg-gray-100 min-h-screen'>
-            <SectionHeader subHeading={'My Cart'} heading={'Wanna Add More?'} />
+            <SectionHeader subHeading={'My Cart'} heading={'Your All Orders'} />
             <article className='px-4 md:px-10 lg:px-20'>
                 <div className='bg-white p-5'>
                     <div className='flex justify-between items-center uppercase font-semibold'>
                         <h2 className="text-sm md:text-xl lg:text-2xl  ">Total Orders : {cart.length}</h2>
                         <h2 className="text-sm md:text-xl lg:text-2xl">Total Price : ${totalPrice}</h2>
-                        <button className='bg-indigo-800 text-white text-xs md:text-md p-2 md:px-5 md:py-2 rounded-md'>Pay</button>
+                        <Link to={'/dashboard/payment'}><button className='bg-indigo-800 text-white text-xs md:text-md p-2 md:px-5 md:py-2 rounded-md'>Process Payment</button></Link>
                     </div>
                 </div>
                 <div className="md:px-6 py-4  bg-white mb-5">

@@ -13,6 +13,7 @@ import Our_Menu from "../Pages/Our_Menu/Our_Menu";
 import Our_Shop from "../Pages/Our_Shop/Our_Shop";
 import SignUp from "../Pages/SignUp/SignUp";
 import AddReview from "../Pages/User/AddReview/AddReview";
+import Payment from "../Pages/User/Payment/Payment";
 import UserBooking from "../Pages/User/UserBooking/UserBooking";
 import UserCart from "../Pages/User/UserCart/UserCart";
 import UserHome from "../Pages/User/UserHome/UserHome";
@@ -77,6 +78,10 @@ const Routes = createBrowserRouter([
                 element: <UserPayment />
             },
             {
+                path: "/dashboard/payment",
+                element: <Payment />
+            },
+            {
                 path: "/dashboard/add-review",
                 element: <AddReview />
             },
@@ -102,7 +107,7 @@ const Routes = createBrowserRouter([
             },
             {
                 path: "/dashboard/all-users",
-                element: <AllUsers />
+                element: <AdminRoute><AllUsers /></AdminRoute>
             },
         ]
     }
