@@ -37,7 +37,7 @@ const LeftMenu = () => {
         </>
         :
         <>
-            <NavLink to={'/dashboard/home'}
+            <NavLink to={'/dashboard/user'}
                 className={({ isActive }) => isActive ? 'active' : 'default'}>
                 <FaHome data-tooltip-id="my-tooltip" data-tooltip-content="Home" />
                 <span className='hidden md:inline'>My Home</span>

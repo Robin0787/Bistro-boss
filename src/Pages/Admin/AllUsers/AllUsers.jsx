@@ -28,10 +28,10 @@ const AllUsers = () => {
                 fetch(`http://localhost:1000/users/${id}`, { method: "DELETE" })
                     .then(res => res.json())
                     .then(data => {
-                        if(data.deletedCount > 0){
+                        if (data.deletedCount > 0) {
                             refetch();
                         }
-                })
+                    })
             }
         })
     }
@@ -55,6 +55,7 @@ const AllUsers = () => {
             }
         })
     }
+    console.log(users);
     return (
         <section className='bg-white min-h-screen'>
             <article className='text-black'>
@@ -69,6 +70,7 @@ const AllUsers = () => {
                         <thead>
                             <tr className='border bg-gray-100'>
                                 <th className='py-6 md:py-8'></th>
+                                <th>Image</th>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Role</th>
@@ -79,14 +81,17 @@ const AllUsers = () => {
                             {
                                 users.map((user, index) => (<tr className='text-sm mb-4' key={user._id}>
                                     <td className='p-4'>{index + 1}</td>
+                                    <td className='p-3'>
+                                        <img src={user?.photoURL} className="h-10 w-10 mx-auto rounded-xl" />
+                                    </td>
                                     <td>{user.displayName}</td>
                                     <td>{user.email}</td>
                                     <td>
                                         {
                                             user.role === 'admin' ?
-                                            <FaUserShield data-tooltip-id="my-tooltip" data-tooltip-content="Admin" size={22} className='text-blue-500 mx-auto cursor-pointer hover:text-indigo-700 duration-300' onClick={() => {}}/>
-                                            :
-                                            <FaUser data-tooltip-id="my-tooltip" data-tooltip-content="User" size={20} className='text-blue-500 mx-auto cursor-pointer hover:text-indigo-700 duration-300' onClick={() => makeAdmin(user._id)}/>
+                                                <FaUserShield data-tooltip-id="my-tooltip" data-tooltip-content="Admin" size={22} className='text-blue-500 mx-auto cursor-pointer hover:text-indigo-700 duration-300' onClick={() => { }} />
+                                                :
+                                                <FaUser data-tooltip-id="my-tooltip" data-tooltip-content="User" size={20} className='text-blue-500 mx-auto cursor-pointer hover:text-indigo-700 duration-300' onClick={() => makeAdmin(user._id)} />
                                         }
                                     </td>
                                     <td> <FaTrashAlt size={18} className='text-red-500 mx-auto cursor-pointer hover:text-red-700 duration-300' onClick={() => deleteUser(user._id)} /></td>

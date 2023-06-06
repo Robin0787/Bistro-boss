@@ -45,11 +45,11 @@ const Login = () => {
         continueWithGoogle()
             .then(res => {
                 toast.success('SignUp Successful');
-                const { displayName, email } = res.user;
+                const { displayName, email, photoURL } = res.user;
                 fetch(`http://localhost:1000/users`, {
                     method: "POST",
                     headers: { 'content-type': 'application/json' },
-                    body: JSON.stringify({ displayName, email })
+                    body: JSON.stringify({ displayName, email, photoURL })
                 });
                 navigate(from, { replace: true });
             })
@@ -63,11 +63,11 @@ const Login = () => {
         continueWithGithub()
             .then(res => {
                 toast.success('SignUp Successful');
-                const { displayName, email } = res.user;
+                const { displayName, email, photoURL } = res.user;
                 fetch(`http://localhost:1000/users`, {
                     method: "POST",
                     headers: { 'content-type': 'application/json' },
-                    body: JSON.stringify({ displayName, email })
+                    body: JSON.stringify({ displayName, email, photoURL })
                 })
                     .then(res => res.json())
                     .then(data => { })

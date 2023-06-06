@@ -39,11 +39,11 @@ const SignUp = () => {
                             toast.success('SignUp Successful');
                             updateProfile(res.user, { displayName: name, photoURL: photo })
                                 .then(() => {
-                                    const { displayName, email } = res.user;
+                                    const { displayName, email, photoURL } = res.user;
                                     fetch(`http://localhost:1000/users`, {
                                         method: "POST",
                                         headers: { 'content-type': 'application/json' },
-                                        body: JSON.stringify({ displayName, email })
+                                        body: JSON.stringify({ displayName, email, photoURL })
                                     })
                                         .then(res => res.json())
                                         .then(data => {setProcessing(false)})
@@ -72,11 +72,11 @@ const SignUp = () => {
         continueWithGoogle()
             .then(res => {
                 toast.success('SignUp Successful');
-                const { displayName, email } = res.user;
+                const { displayName, email, photoURL } = res.user;
                 fetch(`http://localhost:1000/users`, {
                     method: "POST",
                     headers: { 'content-type': 'application/json' },
-                    body: JSON.stringify({ displayName, email })
+                    body: JSON.stringify({ displayName, email, photoURL })
                 })
                     .then(res => res.json())
                     .then(data => {
@@ -93,11 +93,11 @@ const SignUp = () => {
         continueWithGithub()
             .then(res => {
                 toast.success('SignUp Successful');
-                const { displayName, email } = res.user;
+                const { displayName, email, photoURL } = res.user;
                 fetch(`http://localhost:1000/users`, {
                     method: "POST",
                     headers: { 'content-type': 'application/json' },
-                    body: JSON.stringify({ displayName, email })
+                    body: JSON.stringify({ displayName, email, photoURL })
                 })
                     .then(res => res.json())
                     .then(data => {

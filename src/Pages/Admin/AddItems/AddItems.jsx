@@ -39,7 +39,7 @@ const AddItems = () => {
            <article className='text-black'>
             <SectionHeader subHeading={'Add Items'} heading={'Add An Item'} />
             </article>
-            <article className='p-4 md:p-10 lg:p-16 xl:p-20'>
+            <article className='p-4 md:p-10 lg:p-16 xl:px-20 xl:py-10'>
                 <form className='p-4 md:p-10 lg:p-16 xl:p-20 bg-gray-200 space-y-5 text-gray-700' onSubmit={handleSubmit(handleAddItem)}>
                     <div className='space-y-1'>
                         <label htmlFor="name">Recipe Name*</label><br />

@@ -59,7 +59,7 @@ const ManageItems = () => {
                                 menu.map((item, index) => (<tr className='text-sm mb-4' key={item._id}>
                                     <td className='p-4'>{index + 1}</td>
                                     <td className='p-3'>
-                                        <img src={item.image} className="h-10 w-10 md:h-20 md:w-20 mx-auto rounded-xl" />
+                                        <img src={item.image} className="h-10 w-10 mx-auto rounded-xl" />
                                     </td>
                                     <td>{item.name}</td>
                                     <td>${item.price}</td>
