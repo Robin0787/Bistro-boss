@@ -12,10 +12,10 @@ const useAxiosSecure = () => {
     const { logOutUser } = useContext(authContext);
     const navigate = useNavigate();
 
-
     useEffect(() => {
         axiosSecure.interceptors.request.use((config) => {
             const token = localStorage.getItem('user-token');
+            console.log(token);
             if (token) {
                 config.headers.authorization = `bearer ${token}`;
             }

@@ -1,6 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
 import { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { authContext } from '../AuthProvider/Provider';
 import useAxiosSecure from './useAxiosSecure';
 
@@ -8,15 +7,16 @@ import useAxiosSecure from './useAxiosSecure';
 
 const useCartItems = () => {
     const { user, loading } = useContext(authContext);
-    const navigate = useNavigate();
-    const [ axiosSecure ] = useAxiosSecure();
+    const [axiosSecure] = useAxiosSecure();
 
     const { refetch, data: cart = [] } = useQuery({
         queryKey: ['cart-items', user?.email],
         enabled: !loading,
         queryFn: async () => {
-            const res =  await axiosSecure(`/cart-items?email=${user?.email}`)
-            return res.data;
+            if (user) {
+                const res = await axiosSecure(`/cart-items?email=${user?.email}`)
+                return res.data;
+            }
         }
         // queryFn: async () => {
         //     const token = localStorage.getItem('user-token');

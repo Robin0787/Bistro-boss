@@ -2,9 +2,10 @@ import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useContext, useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { ImSpinner9 } from 'react-icons/im';
+import { useNavigate } from 'react-router-dom';
 import { authContext } from '../../../../AuthProvider/Provider';
 import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
-import "./checkoutForm.module.css";
+
 const CheckoutForm = ({ totalPrice, cart }) => {
     const stripe = useStripe();
     const elements = useElements();
@@ -13,8 +14,11 @@ const CheckoutForm = ({ totalPrice, cart }) => {
     const [clientSecret, setClientSecret] = useState('');
     const { user } = useContext(authContext);
     const [paymentLoading, setPaymentLoading] = useState(false);
-    const [transactionId, setTransactionId] = useState('')
+    const [transactionId, setTransactionId] = useState('');
+    const navigate = useNavigate();
+    
     useEffect(() => {
+        console.log('Inside useEffect');
         if (totalPrice > 0) {
             axiosSecure.post('/create-payment-intent', { price: totalPrice })
                 .then(result => {
@@ -22,14 +26,15 @@ const CheckoutForm = ({ totalPrice, cart }) => {
                     setClientSecret(data.clientSecret);
                 })
         } else {
-            toast.error('Nothing ordered');
+            toast.error('Please Order Something!');
+            navigate('/our-shop/salad');
         }
-    }, [totalPrice, axiosSecure]);
+    }, []);
 
     async function handleSubmit(e) {
         e.preventDefault();
         setPaymentLoading(true);
-        if (!stripe || !Element) {
+        if (!stripe || !elements) {
             toast.error('Stripe/Element not found');
             return;
         }
@@ -45,7 +50,7 @@ const CheckoutForm = ({ totalPrice, cart }) => {
         if (error) {
             console.log(error);
             setCardError(error.message);
-            toast.error('Error');
+            toast.error(error.message);
             setPaymentLoading(false);
             return;
         } else {
@@ -64,14 +69,14 @@ const CheckoutForm = ({ totalPrice, cart }) => {
             },
         )
         if (confirmError) {
-            setCardError(confirmError);
+            toast(confirmError.message);
+            setCardError(confirmError.message);
             console.log(confirmError);
+            return;
         }
-        console.log('Payment Intent', paymentIntent);
         if (paymentIntent?.status === 'succeeded') {
             setPaymentLoading(false);
             setTransactionId(paymentIntent.id);
-
             const payment = {
                 email: user?.email,
                 transactionId: paymentIntent.id,
@@ -84,18 +89,17 @@ const CheckoutForm = ({ totalPrice, cart }) => {
             }
             axiosSecure.post('/payments', { payment })
                 .then(res => {
-                    console.log(res.data);
                     if (res.data.insertResult.insertedId) {
-                        toast.success('Succeeded');
-                        e.target.reset();
+                        toast.success('Payment Succeeded');
+                        navigate('/');
                     }
                 })
         }
     }
     return (
-        <section className=' bg-gray-100 p-10'>
-            <form onSubmit={handleSubmit} className='w-2/3 mx-auto bg-white p-10 text-center rounded-lg shadow-xl'>
-            <h1 className="text-2xl font-semibold text-black text-left pb-6"> Total Price: ${totalPrice}</h1>
+        <section className=' bg-gray-100 p-5 md:p-10'>
+            <form onSubmit={handleSubmit} className='md:w-2/3 mx-auto bg-white p-5 md:p-10 text-center rounded-lg shadow-xl'>
+                <h1 className="text-2xl font-semibold text-black text-left pb-6"> Total Price: ${totalPrice}</h1>
                 <CardElement
                     className='text-gray-700 border-2 p-5 border-indigo-500 rounded-lg'
                     options={{

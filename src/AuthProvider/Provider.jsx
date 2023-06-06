@@ -63,8 +63,8 @@ const Provider = ({ children }) => {
                     .then(data => {
                         if (data.token) {
                             localStorage.setItem('user-token', data.token);
-                            setLoading(false);
                             toast.success('Token will be expired after 5 minutes');
+                            setLoading(false);
                         }
                     })
             }

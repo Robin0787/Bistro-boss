@@ -24,6 +24,7 @@ const UserCart = () => {
               })
               .then(res => res.json())
               .then(data => {
+                console.log(data, id);
                 if(data.deletedCount > 0) {
                     refetch();
                     toast.success('Deleted');

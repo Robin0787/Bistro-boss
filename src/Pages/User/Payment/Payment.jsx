@@ -4,7 +4,6 @@ import React from 'react';
 import SectionHeader from '../../../Components/SectionHeader/SectionHeader';
 import useCartItems from '../../../Hooks/useCartItems';
 import CheckoutForm from './CheckoutForm/CheckoutForm';
-
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PK);
 
 const Payment = () => {
