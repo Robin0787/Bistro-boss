@@ -66,10 +66,10 @@ const AddItems = () => {
                         <textarea {...register('recipe', {required:true})} cols="30" rows="10" className='w-full bg-white p-2 rounded-md placeholder:text-sm border-0 focus:outline-0 focus:ring ring-gray-300 duration-300' placeholder='Recipe Details'></textarea>
                     </div>
                     <div>
-                    <input type="file" className="file-input file-input-bordered file-input-md w-full max-w-xs bg-white text-gray-500" {...register('image', {required: true})}/>
+                    <input type="file" className="file-input file-input-primary file-input-bordered file-input-md w-full max-w-xs bg-white text-gray-500" {...register('image', {required: true})}/>
                     </div>
                     <div>
-                        <button type='submit' className='bg-indigo-800 text-white px-8 py-3 rounded-sm flex justify-center items-center gap-2'>Add Item <FaUtensils /></button>
+                        <button type='submit' className='bg-indigo-700 text-white px-8 py-3 rounded-sm flex justify-center items-center gap-2'>Add Item <FaUtensils /></button>
                     </div>
                 </form>
             </article>

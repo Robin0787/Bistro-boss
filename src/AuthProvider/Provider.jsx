@@ -1,6 +1,5 @@
 import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import React, { createContext, useEffect, useState } from 'react';
-import { toast } from "react-hot-toast";
 import app from "../Firebase/Firebase.init";
 
 export const authContext = createContext(null);
@@ -63,7 +62,6 @@ const Provider = ({ children }) => {
                     .then(data => {
                         if (data.token) {
                             localStorage.setItem('user-token', data.token);
-                            toast.success('Token will be expired after 5 minutes');
                             setLoading(false);
                         }
                     })

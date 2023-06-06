@@ -15,7 +15,6 @@ const useAxiosSecure = () => {
     useEffect(() => {
         axiosSecure.interceptors.request.use((config) => {
             const token = localStorage.getItem('user-token');
-            console.log(token);
             if (token) {
                 config.headers.authorization = `bearer ${token}`;
             }
@@ -24,7 +23,7 @@ const useAxiosSecure = () => {
         axiosSecure.interceptors.response.use((response) => response, async (error) => {
             if (error.response && (error.response.status === 401 || error.response.status === 403)) {
                 await logOutUser();
-                toast.error(error.response?.data?.message, '! login again');
+                toast.error('Session expired! login again');
                 navigate('/login');
             }
             return Promise.reject(error);

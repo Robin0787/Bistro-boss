@@ -58,8 +58,12 @@ const Routes = createBrowserRouter([
         element: <PrivateRoutes><DashboardRoute/></PrivateRoutes>,
         children: [
             {
-                path: '/dashboard',
+                path: 'user',
                 element: <UserHome />
+            },
+            {
+                path: 'admin',
+                element: <AdminRoute><AdminHome /></AdminRoute>
             },
             {
                 path: "/dashboard/my-cart",
@@ -90,10 +94,6 @@ const Routes = createBrowserRouter([
                 element: <UserBooking />
             },
             {
-                path: "/dashboard/admin-home",
-                element: <AdminHome />
-            },
-            {
                 path: "/dashboard/add-items",
                 element: <AdminRoute><AddItems /></AdminRoute>
             },
@@ -103,7 +103,7 @@ const Routes = createBrowserRouter([
             },
             {
                 path: "/dashboard/manage-bookings",
-                element: <ManageBookings />
+                element: <AdminRoute><ManageBookings /></AdminRoute>
             },
             {
                 path: "/dashboard/all-users",

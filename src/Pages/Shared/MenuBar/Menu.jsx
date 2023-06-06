@@ -4,17 +4,19 @@ import { FaCartArrowDown, FaUserCircle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { authContext } from '../../../AuthProvider/Provider';
 import useCartItems from '../../../Hooks/useCartItems';
+import useCheckAdmin from '../../../Hooks/useCheckAdmin';
 
 const Menu = () => {
     const { user, setUser, logOutUser } = useContext(authContext);
     const [ cart ] = useCartItems();
-    // const cart = [];
+    const [isAdmin, isAdminLoading] = useCheckAdmin();
+    
     const menuItem = <div className='flex items-center'>
         <Link className='px-3 py-1 hover:text-orange-500 duration-500' to={'/'}>Home</Link>
         <Link className='px-3 py-1 hover:text-orange-500 duration-500' to={'/our-menu'}>Our Menu</Link>
         <Link className='px-3 py-1 hover:text-orange-500 duration-500' to={'/our-shop/salad'}>Our Shop</Link>
         {
-            user && <Link className='px-3 py-1 hover:text-orange-500 duration-500 flex items-center gap-2' to={'/dashboard'}>Dashboard
+            user && <Link className='px-3 py-1 hover:text-orange-500 duration-500 flex items-center gap-2' to={isAdmin ? '/dashboard/admin' : '/dashboard/user'}>Dashboard
             <div className='relative'>
                 <FaCartArrowDown className='h-8 w-10 bg-orange-600 hover:text-white p-2 rounded-full' />
                 <p className="absolute -top-1 -right-6 rounded-full text-xs px-2 py-[2px] bg-green-500 text-white ">+{cart?.length || 0}</p>

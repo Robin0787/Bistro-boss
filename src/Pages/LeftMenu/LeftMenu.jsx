@@ -10,7 +10,7 @@ const LeftMenu = () => {
     const [isAdmin]= useCheckAdmin();
     const menus = isAdmin ?
         <>
-            <NavLink to={'/dashboard/admin-home'}
+            <NavLink to={'/dashboard/admin'}
                 className={({ isActive }) => isActive ? 'active' : 'default'}>
                 <FaHome data-tooltip-id="my-tooltip" data-tooltip-content="Admin Home"/>
                 <span className='hidden md:inline'>Admin Home</span>
@@ -37,7 +37,7 @@ const LeftMenu = () => {
         </>
         :
         <>
-            <NavLink to={'/dashboard/my-home'}
+            <NavLink to={'/dashboard/home'}
                 className={({ isActive }) => isActive ? 'active' : 'default'}>
                 <FaHome data-tooltip-id="my-tooltip" data-tooltip-content="Home" />
                 <span className='hidden md:inline'>My Home</span>
@@ -78,7 +78,7 @@ const LeftMenu = () => {
             <div className="drawer-side">
                 <label htmlFor="my-drawer" className="drawer-overlay"></label>
                 <ul className="menu p-4 md:px-2 lg:p-6  w-80 text-white bg-indigo-950 uppercase flex flex-col justify-center gap-5">
-                    <Link className='uppercase hidden md:flex flex-col justify-center  text-3xl text-white transform -rotate-90 md:rotate-0 origin-left'>Bistro Boss
+                    <Link className='uppercase hidden md:flex flex-col justify-center  text-3xl text-white transform -rotate-90 md:rotate-0 origin-left' to={isAdmin ? '/dashboard/admin' : '/dashboard/user'}>Bistro Boss
                         <span className='text-[10px] -mt-3 md:tracking-[4px] lg:tracking-[11px] '>Restaurant</span>
                     </Link>
                     {menus}
