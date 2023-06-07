@@ -25,7 +25,7 @@ const AllUsers = () => {
             confirmButtonText: 'Delete'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:1000/users/${id}`, { method: "DELETE" })
+                fetch(`https://bistro-boss-server-jet-chi.vercel.app/users/${id}`, { method: "DELETE" })
                     .then(res => res.json())
                     .then(data => {
                         if (data.deletedCount > 0) {
@@ -47,7 +47,7 @@ const AllUsers = () => {
             confirmButtonText: 'Make Admin'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:1000/users/admin/${id}`, { method: "PATCH" })
+                fetch(`https://bistro-boss-server-jet-chi.vercel.app/users/admin/${id}`, { method: "PATCH" })
                     .then(res => res.json())
                     .then(data => {
                         refetch();

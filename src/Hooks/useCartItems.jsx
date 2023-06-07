@@ -20,7 +20,7 @@ const useCartItems = () => {
         }
         // queryFn: async () => {
         //     const token = localStorage.getItem('user-token');
-        //     const res = await fetch(`http://localhost:1000/cart-items?email=${user?.email}`, {
+        //     const res = await fetch(`https://bistro-boss-server-jet-chi.vercel.app/cart-items?email=${user?.email}`, {
         //         method: "GET",
         //         headers: {
         //             authorization: `bearer ${token}`

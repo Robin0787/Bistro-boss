@@ -42,7 +42,7 @@ const Provider = ({ children }) => {
             setUser(currentUser);
             // Fetching data using axios
             if (currentUser) {
-                // axios.post('http://localhost:1000/get-token', { email: currentUser?.email })
+                // axios.post('https://bistro-boss-server-jet-chi.vercel.app/get-token', { email: currentUser?.email })
                 //     .then(data => {
                 //         const token = data.data?.token;
                 //         console.log('-----------UseEffect------------');
@@ -53,7 +53,7 @@ const Provider = ({ children }) => {
                 //         }
                 // })
 
-                fetch('http://localhost:1000/get-token', {
+                fetch('https://bistro-boss-server-jet-chi.vercel.app/get-token', {
                     method: "POST",
                     headers: { 'content-type': "application/json" },
                     body: JSON.stringify({ email: currentUser.email })

@@ -40,7 +40,7 @@ const SignUp = () => {
                             updateProfile(res.user, { displayName: name, photoURL: photo })
                                 .then(() => {
                                     const { displayName, email, photoURL } = res.user;
-                                    fetch(`http://localhost:1000/users`, {
+                                    fetch(`https://bistro-boss-server-jet-chi.vercel.app/users`, {
                                         method: "POST",
                                         headers: { 'content-type': 'application/json' },
                                         body: JSON.stringify({ displayName, email, photoURL })
@@ -73,7 +73,7 @@ const SignUp = () => {
             .then(res => {
                 toast.success('SignUp Successful');
                 const { displayName, email, photoURL } = res.user;
-                fetch(`http://localhost:1000/users`, {
+                fetch(`https://bistro-boss-server-jet-chi.vercel.app/users`, {
                     method: "POST",
                     headers: { 'content-type': 'application/json' },
                     body: JSON.stringify({ displayName, email, photoURL })
@@ -94,7 +94,7 @@ const SignUp = () => {
             .then(res => {
                 toast.success('SignUp Successful');
                 const { displayName, email, photoURL } = res.user;
-                fetch(`http://localhost:1000/users`, {
+                fetch(`https://bistro-boss-server-jet-chi.vercel.app/users`, {
                     method: "POST",
                     headers: { 'content-type': 'application/json' },
                     body: JSON.stringify({ displayName, email, photoURL })

@@ -13,7 +13,7 @@ const ItemCard = ({ item }) => {
             // Not sending the items id because If anyone clicked same items two times the server will give error and eventually crash because in database two items can't have same id.
             // const addItem = {...item, email: user.email};
             const addItem = {name, recipe, image, category, price, email: user.email, menuId: _id};
-            fetch('http://localhost:1000/add-to-cart', {
+            fetch('https://bistro-boss-server-jet-chi.vercel.app/add-to-cart', {
                 method: "POST",
                 headers: {
                     'content-type': 'application/json'
