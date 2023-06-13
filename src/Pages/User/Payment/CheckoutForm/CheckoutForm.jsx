@@ -29,7 +29,7 @@ const CheckoutForm = ({ totalPrice, cart }) => {
             toast.error('Please Order Something!');
             navigate('/our-shop/salad');
         }
-    }, []);
+    }, [navigate, totalPrice]);
 
     async function handleSubmit(e) {
         e.preventDefault();

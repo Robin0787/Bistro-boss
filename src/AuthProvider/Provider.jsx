@@ -29,7 +29,6 @@ const Provider = ({ children }) => {
     }
     // Logout the user
     const logOutUser = () => {
-        localStorage.removeItem('user-token');
         return signOut(auth);
     }
     // send the password reset email to user
@@ -65,6 +64,8 @@ const Provider = ({ children }) => {
                             setLoading(false);
                         }
                     })
+            }else{
+                localStorage.removeItem('user-token');
             }
         });
         return () => unsubscribe();

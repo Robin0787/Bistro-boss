@@ -55,7 +55,6 @@ const AllUsers = () => {
             }
         })
     }
-    console.log(users);
     return (
         <section className='bg-white min-h-screen'>
             <article className='text-black'>

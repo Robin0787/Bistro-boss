@@ -23,7 +23,9 @@ const useAxiosSecure = () => {
         axiosSecure.interceptors.response.use((response) => response, async (error) => {
             if (error.response && (error.response.status === 401 || error.response.status === 403)) {
                 await logOutUser();
-                toast.error('Session expired! login again');
+                console.log('--------------------');
+                console.log(error.response);
+                toast.error(error.response.data.message);
                 navigate('/login');
             }
             return Promise.reject(error);

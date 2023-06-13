@@ -18,7 +18,7 @@ const PrivateRoutes = ({children}) => {
     else if(user) {
        return children
     }
-    toast.success('Login First');
+    toast.error('Login First');
     return <Navigate to={'/login'} state={{from: location}} replace/>
 };
 
